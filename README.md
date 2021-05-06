@@ -16,28 +16,38 @@ Blog post: https://www.graphql.college/graphql-subscriptions-with-react-node-apo
 
 ## Features
 
-* **Add pin**. Uses React Apollo's [`<Query />`](https://www.apollographql.com/docs/react/essentials/queries.html#basic) component.
-* **List pins**. Uses React Apollo's [`<Mutation />`](https://www.apollographql.com/docs/react/essentials/mutations.html#basic) component.
-* **Update pin list in real time**.
-  * Client: Uses [`<Query />`'s](https://www.apollographql.com/docs/react/essentials/queries.html#props) `subscribeToMore` property.
-  * Server: Uses [`graphql-subscriptions`](https://github.com/apollographql/graphql-subscriptions) and [`graphql-postgres-subscriptions`](https://github.com/GraphQLCollege/graphql-postgres-subscriptions)
+- **Add pin**. Uses React Apollo's [`<Query />`](https://www.apollographql.com/docs/react/essentials/queries.html#basic) component.
+- **List pins**. Uses React Apollo's [`<Mutation />`](https://www.apollographql.com/docs/react/essentials/mutations.html#basic) component.
+- **Update pin list in real time**.
+  - Client: Uses [`<Query />`'s](https://www.apollographql.com/docs/react/essentials/queries.html#props) `subscribeToMore` property.
+  - Server: Uses [`graphql-subscriptions`](https://github.com/apollographql/graphql-subscriptions) and [`graphql-postgres-subscriptions`](https://github.com/GraphQLCollege/graphql-postgres-subscriptions)
 
 ## Getting started
 
 ### Requirements
 
-* Nodejs
-* Postgres
+- Nodejs
+- Postgres
 
 ### Installation
 
 ```sh
 # Clone repo
 git clone https://github.com/GraphQLCollege/apollo-subscriptions-example.git
+# Run database services
+docker compose up
 # Install server dependencies
 cd packages/server && yarn
 # Setup environment variables
 cp .env.example .env
+
+HOST=localhost
+PORT=3001
+DB="postgres"
+DBHOST=localhost
+DBPORT=5432
+DBUSER=postgres
+DBPASSWORD=postgres
 # Create and migrate database
 yarn db:create && yarn db:migrate
 # Start server
